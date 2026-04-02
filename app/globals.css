@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #050816;
+  --foreground: #ffffff;
+  --cyber-green: #00FF88;
+  --cyber-blue: #00D1FF;
+}
+
+@layer base {
+  body {
+    @apply bg-[#050816] text-white antialiased overflow-x-hidden;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  /* Glassmorphism Card Effect */
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl;
+  }
+
+  /* The Satellite Scanning Line Animation */
+  .scanner-line {
+    @apply absolute w-full z-10;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--cyber-green), transparent);
+    box-shadow: 0 0 15px var(--cyber-green);
+    animation: scan 4s linear infinite;
+  }
+
+  /* Neon Glow Button */
+  .btn-cyber {
+    @apply px-8 py-4 bg-[#00FF88] text-black font-black uppercase text-xs 
+           tracking-widest transition-all duration-300 
+           hover:bg-white hover:scale-[1.02] active:scale-95
+           shadow-[0_0_20px_rgba(0,255,136,0.3)];
+  }
+}
+
+/* Custom Keyframes for the "Satellite Scan" */
+@keyframes scan {
+  0% { top: 0%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+/* Custom Scrollbar for the Dark UI */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #050816;
+}
+::-webkit-scrollbar-thumb {
+  background: #1a1e2e;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cyber-green);
+}
